@@ -1,0 +1,21 @@
+<html>
+    <head>
+    </head>
+    <body>
+        <script>
+            var count = 1
+            let item = localStorage.getItem("ranking_count")
+            if (item !== null) {
+                count = JSON.parse(item)[{{.Site}}]
+                if (count == null) {
+                    count = 1
+                }
+            }
+            if (count%5 === 0 && count != 0) {
+                window.location.href = "/results/none/" + {{.Site}} + "/none"
+            } else {
+                window.location.href = "/category/none/" + {{.Site}}
+            }
+        </script>
+    </body>
+</html>

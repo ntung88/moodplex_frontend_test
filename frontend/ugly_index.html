@@ -1,0 +1,110 @@
+<html>
+  <head>
+    <link rel="stylesheet" href="static/main.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <style></style>
+  </head>
+
+  <script>
+    localStorage.setItem('ranking_count', JSON.stringify({'count': 0}));
+    console.log("ranking_count set")
+  </script>
+
+  <body>
+    <div class="navbar">
+      <a class = "active" href="#home">Home</a>
+      <a href="">Trending</a>
+      <a href="">About</a>
+    </div>
+
+    <h1 class="title">moodplex</h1>
+    <p class="subtitle">What content are you in the mood for right now?</p>
+      <div class = "row1">
+        <input type="radio" class="btn btn-info" name="mood" value="happy" id="home-radio">Happy</input>
+        <input type="radio" class="btn btn-info" name="mood" value="funny" id="home-radio">Funny</input>
+        <input type="radio" class="btn btn-info" name="mood" value="informative" id="home-radio">Informative</input>
+        <input type="radio" class="btn btn-info" name="mood" value="motivational" id="home-radio">Motivational</input>
+      </div>
+      <div class = "row2">
+        <input type="radio" class="btn btn-info" name="mood" value="sad" id="home-radio">Sad</input>
+        <input type="radio" class="btn btn-info" name="mood" value="cute" id="home-radio">Cute</input>
+        <input type="radio" class="btn btn-info" name="mood" value="educational" id="home-radio">Educational</input>
+        <input type="radio" class="btn btn-info" name="mood" value="angry" id="home-radio">Angry</input>
+        <input type="radio" class="btn btn-info" name="mood" value="uplifting" id="home-radio">Uplifting</input>
+      </div>
+      <div class = "row3">
+        <input type="radio" class="btn btn-info" name="mood" value="scary" id="home-radio">Scary</input>
+        <input type="radio" class="btn btn-info" name="mood" value="artistic" id="home-radio">Artistic</input>
+        <input type="radio" class="btn btn-info" name="mood" value="news" id="home-radio">News</input>
+        <input type="radio" class="btn btn-info" name="mood" value="romantic" id="home-radio">Romantic</input>
+      </div>
+
+      <p class="subtitle">Where do you want to view content from?</p>
+      <div class = "row1">
+        <input type="radio" class="btn btn-info" name="site" value="twitter"
+               id="home-radio">Twitter</input>
+        <input type="radio" class="btn btn-info" name="site" value="reddit"
+               id="home-radio">Reddit</input>
+        <input type="radio" class="btn btn-info" name="site" value="imgur"
+               id="home-radio">Imgur</input>
+        <input type="radio" class="btn btn-info" name="site" value="youtube"
+               id="home-radio">YouTube</input>
+        <input type="radio" class="btn btn-info" name="site" value="hackernews"
+               id="home-radio">Hacker News</input>
+      </div>
+
+      <button onclick="sendInfo()" type="submit" class="btn btn-info" id="home-submit">Submit</button>
+
+    <script>
+      function sendInfo() {
+        var ele = document.getElementsByName('mood'); 
+        var mood = ""
+         
+        for(i = 0; i < ele.length; i++) { 
+            if(ele[i].checked) {
+            mood = ele[i].value; 
+            }
+        }
+
+        if (mood === "") {
+          console.log("No mood selected!")
+          return
+        }
+
+        ele = document.getElementsByName('site'); 
+        var site = ""
+         
+        for(i = 0; i < ele.length; i++) { 
+            if(ele[i].checked) {
+            site = ele[i].value; 
+            }
+        }
+
+        if (site === "") {
+          console.log("No site selected!")
+          return
+        }
+
+        window.location.href = "/category/" + String(mood) + "/" + String(site)
+
+        // var data = JSON.stringify({"mood": mood, "site": site})
+
+        // $.ajax
+        // ({
+        //   type: "POST",
+        //   //the url where you want to sent the userName and password to
+        //   url: '/category',
+        //   dataType: 'json',
+        //   contentType: 'application/json',
+        //   async: false,
+        //   //json object to sent to the authentication url
+        //   data: data,
+        //   success: function () {
+        //     location.href = "/category"
+        //   }
+        // })
+      }
+    </script>
+  </body>
+
+</html>

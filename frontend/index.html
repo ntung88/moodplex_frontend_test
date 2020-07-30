@@ -1,0 +1,35 @@
+<html>
+  <head>
+    <link rel="stylesheet" href="static/main.css">
+    <title>Moodplex</title>
+    <script src="scripts/plug.js"></script>
+  </head>
+
+  <body>
+    <div class="navbar">
+      <a class = "active" href="#home">Home</a>
+      <!-- <a href="">Trending</a>
+      <a href="">About</a> -->
+    </div>
+
+    <div id="mobile">If you are viewing on a mobile device, please turn to landscape</div>
+
+    <h1 class="title">moodplex</h1>
+
+      <p class="subtitle">Where do you want to view content from?</p>
+      <div class = "row1">
+        <!-- <button type="submit" onclick="location.href = '/source/twitter'" class="btn btn-info" name="site" value="twitter"
+               id="home-radio">Twitter</button> -->
+        <button type="submit" onclick="location.href = '/source/reddit'" class="btn btn-info" name="site" value="reddit"
+               id="home-radio">Reddit</button>
+        <button type="submit" onclick="location.href = '/source/youtube'" class="btn btn-info" name="site" value="youtube"
+               id="home-radio">YouTube</button>
+        <button type="submit" onclick="location.href = '/source/hackernews'" class="btn btn-info" name="site" value="hackernews"
+               id="home-radio">Hacker News</button>
+      </div>
+      
+      <p id="plug"></p>
+    <script src="scripts/plug.js"></script>
+  </body>
+
+</html>

@@ -1,0 +1,42 @@
+<html>
+  <head>
+    <link rel="stylesheet" href="/static/results.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script sync src="https://platform.twitter.com/widgets.js"></script>
+    <script async src="//embed.redditmedia.com/widgets/platform.js" charset="UTF-8"></script>
+    <script>
+      window.mood = {{.Mood}};
+      window.site = {{.Site}};
+      window.upto = {{.Upto}};
+    </script>
+    <script src="scripts/plug.js"></script>
+    <title></title>
+  </head>
+  <body>
+    <div id="navbar" class="navbar">
+      <a class = "active" href="/index.html">Home</a>
+      <!-- <a href="/source/twitter">Twitter</a> -->
+      <a href="/source/reddit">Reddit</a>
+      <a href="/source/youtube">YouTube</a>
+      <a href="/source/hackernews">Hacker News</a>
+      <br>
+      <br>
+      <br>
+    </div>
+
+    <h1 class="title">moodplex</h1>
+<p class="subtitle">
+      Click on the result to be taken to the original post
+    </p>
+  <div></div>
+  <div id="results" class="flex-container2 container results-container"></div>
+  <br>
+  <button id="rank_button" class="btn" type="submit">Continue Comparing to See More of the Rankings</button>
+  <div style="margin-bottom: 5%"></div>
+  <p id="plug"></p>
+  <script src="/scripts/plug.js"></script>
+</body>
+
+<script src="/scripts/results.js"></script>
+</html>
