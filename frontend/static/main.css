@@ -238,6 +238,7 @@ hr{
 }
 
 #id {
+  margin-top: 150px;
   display: hidden;
 }
 
@@ -247,6 +248,6 @@ hr{
   }
 
   p {
-    font-size: 15px;
+    font-size: 10px;
   }
 }
