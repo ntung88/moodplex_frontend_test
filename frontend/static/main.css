@@ -71,14 +71,6 @@ body {
   font-family: "Futura";
 }
 
-.title {
-  padding-top: 15%;
-  font-size: 75px;
-  color: #CC0044;
-  text-align: center;
-  margin: 0px;
-}
-
 .subtitle {
   color: #595758;
   font-size: 25px;
@@ -240,6 +232,15 @@ hr{
 #id {
   margin-top: 150px;
   display: hidden;
+}
+
+.title {
+  padding-top: 15%;
+  font-size: 75px;
+  color: #CC0044;
+  text-align: center;
+  margin: 0px;
+  margin-top: -50px;
 }
 
 @media (pointer:none), (pointer:coarse) {
