@@ -411,7 +411,7 @@ func (src HackerNewsSrc) fillDB() {
 	// API Limit: No limit
 	const hackerNewsPrefix = "https://news.ycombinator.com/item?id="
 	deadList := []string{"https://www.bloomberg.com",
-		"https://www.nasa.gov/", "https://coil.com", "https://www.vice.com"}
+		"https://www.nasa.gov/", "https://coil.com", "https://www.vice.com", "https://www.newsweek.com"}
 	// Gets newest 500 stories
 	itemIDArr, err := hn.GetStories("new")
 	fmt.Println()

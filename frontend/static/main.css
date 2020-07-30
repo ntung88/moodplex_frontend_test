@@ -230,17 +230,17 @@ hr{
 }
 
 #id {
-  margin-top: 150px;
+  margin-top: 75px;
   display: hidden;
 }
 
 .title {
+  margin-top: -20px;
   padding-top: 15%;
   font-size: 75px;
   color: #CC0044;
   text-align: center;
   margin: 0px;
-  margin-top: -50px;
 }
 
 @media (pointer:none), (pointer:coarse) {

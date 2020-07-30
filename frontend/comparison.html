@@ -1,6 +1,6 @@
 <html>
 <head>
-    <link rel="stylesheet" href="/static/category.css"/>
+    <link rel="stylesheet" href="/static/comparison.css"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script sync src="https://platform.twitter.com/widgets.js"></script>
@@ -31,11 +31,12 @@
     <!-- <button class = "btn-side" onclick=""><i class="fa fa-angle-left" style="font-size: 2em;"></i></button> -->
     <div id="leftColumn" class="column">
         <button class = "btn" onclick="sendMatchJSON(1,0)">This post <i class="fa fa-arrow-down"></i></button>
-        <div id="post_div1"></div>
+        <br>
+        <div id="post_div1" class="vertical-center"></div>
     </div>
     <div id="rightColumn" class="column">
         <button class = "btn" onclick="sendMatchJSON(0,1)">This post <i class="fa fa-arrow-down"></i></button>
-        <div id="post_div2"></div>
+        <div id="post_div2" class="vertical-center"></div>
     </div>
 </div>
 

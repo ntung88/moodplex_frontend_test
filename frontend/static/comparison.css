@@ -269,6 +269,18 @@ progress::-moz-progress-bar {
   background: rgb(197,0,60);
 }
 
+/*.vertical-center {*/
+/*  !* make element inline flex-container *!*/
+/*  !* this will make its children flex-items *!*/
+/*  display: inline-flex;*/
+/*  !* align-items items in column *!*/
+/*  flex-direction: column;*/
+/*  !* center items horizontally *!*/
+/*  align-items: center;*/
+/*  !* center items vertically *!*/
+/*  justify-content: center;*/
+/*}*/
+
 #plug {
   --nc-tx-1: #000000;
   --nc-tx-2: #1A1A1A;

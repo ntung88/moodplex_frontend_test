@@ -27,15 +27,15 @@ function appendResultsButtons() {
         }
         navbar.innerHTML = navbar.innerHTML + "<a class=\"nohover\">Rankings:</a>"
         for (let i = NUM_RESULTS; i <= top; i += NUM_RESULTS) {
-            navbar.innerHTML = navbar.innerHTML + `<a href="/results/` + window.mood + `/` + window.site + `/` + i + `">` 
+            navbar.innerHTML = navbar.innerHTML + `<a href="/rankings/` + window.mood + `/` + window.site + `/` + i + `">`
                 + siteName + `: ` + (i - NUM_RESULTS + 1) + `-` + i + `</a>`
         }
-        navbar.innerHTML = navbar.innerHTML + `<a href="/category/` + window.mood + `/` + window.site + `">Continue Comparing to See More of the Rankings</a>`
+        navbar.innerHTML = navbar.innerHTML + `<a href="/comparison/` + window.mood + `/` + window.site + `">Continue Comparing to See More of the Rankings</a>`
     }
 }
 
 function addResultsToPage(response) {
-    appendResultsButtons()
+    appendResultsButtons();
     console.log(response)
     var container = document.getElementById('results')
     let count = JSON.parse(localStorage.getItem('ranking_count'))[window.site]
@@ -140,7 +140,7 @@ $.ajax
 ({
     type: "POST",
     //the url where you want to sent the userName and password to
-    url: '/getresults',
+    url: '/getrankings',
     dataType: 'json',
     contentType: 'application/json',
     async: false,
@@ -148,7 +148,8 @@ $.ajax
     data: data,
     success: addResultsToPage
 });
+console.log("uwu")
 
 document.getElementById('rank_button').onclick = function(){
-    location.href = "/category/" + window.mood + "/" + window.site;
+    location.href = "/comparison/" + window.mood + "/" + window.site;
 };

@@ -141,13 +141,13 @@ func main() {
 		panic("Cannot connect to the database")
 	}
 
-	// go wipeAndFillDB()
+	go wipeAndFillDB()
 
 	r := mux.NewRouter()
 	r.HandleFunc("/match", matchHandler).Methods("POST")
 	r.HandleFunc("/posts", postsHandler).Methods("POST")
 	r.HandleFunc("/delete", deleteHandler).Methods("POST")
-	r.HandleFunc("/getresults", resultsHandler).Methods("POST")
+	r.HandleFunc("/getrankings", resultsHandler).Methods("POST")
 
 	r.HandleFunc("/source/{site}", func(w http.ResponseWriter, r *http.Request) {
 		vars := mux.Vars(r)
@@ -159,37 +159,41 @@ func main() {
 		}
 	})
 
-	r.HandleFunc("/category/{mood}/{site}", func(w http.ResponseWriter, r *http.Request) {
+	r.HandleFunc("/comparison/{mood}/{site}", func(w http.ResponseWriter,
+		r *http.Request) {
 		vars := mux.Vars(r)
 		data := QueryStruct{
 			Mood: vars["mood"],
 			Site: vars["site"]}
-		tmpl := template.Must(template.ParseFiles("frontend/category.html"))
+		tmpl := template.Must(template.ParseFiles("frontend/comparison.html"))
 		err := tmpl.Execute(w, data)
 		if err != nil {
 			panic(err)
 		}
 	})
 
-	r.HandleFunc("/results/{mood}/{site}/{upto}", func(w http.ResponseWriter, r *http.Request) {
+	r.HandleFunc("/rankings/{mood}/{site}/{upto}", func(w http.ResponseWriter,
+		r *http.Request) {
 		vars := mux.Vars(r)
 		data := QueryStruct{
 			Mood: vars["mood"],
 			Site: vars["site"],
 			Upto: vars["upto"]}
-		tmpl := template.Must(template.ParseFiles("frontend/results.html"))
+		tmpl := template.Must(template.ParseFiles("frontend/rankings.html"))
 		err := tmpl.Execute(w, data)
 		if err != nil {
 			panic(err)
 		}
 	})
 
-	r.HandleFunc("/secretresults/{mood}/{site}", func(w http.ResponseWriter, r *http.Request) {
+	r.HandleFunc("/secretrankings/{mood}/{site}", func(w http.ResponseWriter,
+		r *http.Request) {
 		vars := mux.Vars(r)
 		data := QueryStruct{
 			Mood: vars["mood"],
 			Site: vars["site"]}
-		tmpl := template.Must(template.ParseFiles("frontend/results_" + vars["site"] + ".html"))
+		tmpl := template.Must(template.ParseFiles(
+			"frontend/rankings_" + vars["site"] + ".html"))
 		err := tmpl.Execute(w, data)
 		if err != nil {
 			panic(err)

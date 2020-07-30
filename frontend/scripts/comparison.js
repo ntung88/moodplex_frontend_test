@@ -68,13 +68,16 @@ function appendResultsButtons() {
         }
         navbar.innerHTML = navbar.innerHTML + "<a class=\"nohover\">Rankings:</a>"
         for (let i = NUM_RESULTS; i <= top; i += NUM_RESULTS) {
-            navbar.innerHTML = navbar.innerHTML + `<a href="/results/` + window.mood + `/` + window.site + `/` + i + `">` 
+            navbar.innerHTML = navbar.innerHTML + `<a href="/rankings/` + window.mood + `/` + window.site + `/` + i + `">`
                 + siteName + `: ` + (i - NUM_RESULTS + 1) + `-` + i + `</a>`
         }
     }
 }
 
 function addHNPosts(response) {
+    const IFRAME_WARNING = "This website does not allow for it to be" +
+        " on Moodplex. Click on the links above to view the post.";
+
     let miscObj1 = JSON.parse(response['misc1']);
     let cat_1_url = response['source1'];
     if (cat_1_url === "") {
@@ -98,6 +101,7 @@ function addHNPosts(response) {
     post2.innerHTML = titleLink2 + hnLink2;
 
     let iframe1 = document.getElementById("post1");
+    let iframeAlert1 = document.getElementById("iframe-alert1");
     if (miscObj1.allowIFrame === true) {
         if (iframe1 === null) {
             let iframe1 = `<iframe src="` + cat_1_url + `" class="posts"
@@ -106,11 +110,20 @@ function addHNPosts(response) {
         } else {
             iframe1.setAttribute("src", cat_1_url);
         }
-    } else if (iframe1 != null) {
-        iframe1.remove();
+        if (iframeAlert1 != null) {
+            iframeAlert1.remove();
+        }
+    } else {
+        if (iframeAlert1 === null) {
+            post1.innerHTML += "<p id='iframe-alert1'>" + IFRAME_WARNING + "</p>";
+        }
+        if (iframe1 != null) {
+            iframe1.remove();
+        }
     }
 
     let iframe2 = document.getElementById("post2");
+    let iframeAlert2 = document.getElementById("iframe-alert2");
     if (miscObj2.allowIFrame === true) {
         if (iframe2 === null) {
             let iframe2 = `<iframe src="` + cat_2_url + `" class="posts"
@@ -119,8 +132,16 @@ function addHNPosts(response) {
         } else {
             iframe2.setAttribute("src", cat_2_url);
         }
-    } else if (iframe2 != null) {
-        iframe2.remove();
+        if (iframeAlert2 != null) {
+            iframeAlert2.remove();
+        }
+    } else {
+        if (iframeAlert2 === null) {
+            post2.innerHTML += "<p id='iframe-alert2'>" + IFRAME_WARNING + "</p>";
+        }
+        if (iframe2 != null) {
+            iframe2.remove();
+        }
     }
 
     console.log("metadata: " + cat_1_url + " " + cat_2_url);
@@ -261,7 +282,7 @@ function sendMatchJSON(score1, score2) {
     if ((new_count)%5 === 0) {
         // new_count = count + 1
         // localStorage.setItem('ranking_count', JSON.stringify({'count': 0}))
-        location.href = "/results/" + window.mood + "/" + window.site + "/none"
+        location.href = "/rankings/" + window.mood + "/" + window.site + "/none"
     } else {
         sendcatJSON();
     }
