@@ -229,7 +229,7 @@ hr{
   text-align: center;
 }
 
-#id {
+#mobile {
   margin-top: 75px;
   display: hidden;
 }
@@ -244,7 +244,7 @@ hr{
 }
 
 @media (pointer:none), (pointer:coarse) {
-  #id {
+  #mobile {
     display: block;
   }
 
